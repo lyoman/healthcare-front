@@ -1,0 +1,124 @@
+<nav [ngClass]="{ sidebarPushRight: isActive, collapsed: collapsed }" class="sidebar">
+    <div class="list-group">
+        <a [routerLinkActive]="['router-link-active']" class="list-group-item" routerLink="/dashboard">
+            <i class="fa fa-fw fa-home"></i>&nbsp;
+            <span>{{ 'Dashboard' }}</span>
+        </a>
+        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/register']" class="list-group-item">
+            <i class="fa fa-fw fa-wrench"></i>&nbsp;
+            <span>{{ 'Registration' }}</span>
+        </a>
+        <!-- <a [routerLinkActive]="['router-link-active']" class="list-group-item" routerLink="/packaging-dashboard/registration">
+            <i class="fa fa-fw fa-address-card"></i>&nbsp;
+            <span>{{ 'Brand Development' }}</span>
+        </a>
+        <a [routerLinkActive]="['router-link-active']" class="list-group-item" routerLink="/osh/risk-assessment/pretask">
+            <i class="fa fa-fw fa-plus-square"></i>&nbsp;
+            <span>{{ 'Insights' }}</span>
+        </a>
+        <a [routerLinkActive]="['router-link-active']" class="list-group-item" routerLink="/osh/risk-assessment/issue-based">
+            <i class="fa fa-fw fa-plus-circle"></i>&nbsp;
+            <span>{{ 'Brand Campaigns' }}</span>
+        </a>
+        <a [routerLinkActive]="['router-link-active']" class="list-group-item" routerLink="/suggestion-scheme">
+            <i class="fa fa-fw fa-clipboard"></i>&nbsp;
+            <span>{{ 'Agency Management' }}</span>
+        </a> -->
+
+
+        <div class="nested-menu">
+            <a (click)="addExpandClass('pages')" class="list-group-item">
+                <i class="fa fa-fw fa-address-card"></i>&nbsp;
+                <span>{{ 'Marketing' }}</span>
+            </a>
+            <li [class.expand]="showMenu === 'pages'" class="nested">
+                <ul class="submenu">
+                    <li>
+                        <a [routerLinkActive]="['router-link-active']" routerLink="/marketing/brand-devpt">
+                            <i class="fa fa-monument"></i>&nbsp;
+                            <span>{{ 'Brand Development' }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLinkActive]="['router-link-active']" routerLink="/marketing/insights">
+                            <i class="fa fa-monument"></i>&nbsp;
+                            <span>{{ 'Insights' }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLinkActive]="['router-link-active']" routerLink="/marketing/campaigns">
+                            <i class="fa fa-monument"></i>&nbsp;
+                            <span>{{ 'Brand Campaigns' }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLinkActive]="['router-link-active']" routerLink="/marketing/agency">
+                            <i class="fa fa-monument"></i>&nbsp;
+                            <span>{{ 'Agency Management' }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </div>
+
+        <div class="nested-menu">
+            <a (click)="addExpandClass1('pages')" class="list-group-item">
+                <i class="fa fa-fw fa-plus-square"></i>&nbsp;
+                <span>{{ 'Channel' }}</span>
+            </a>
+            <li [class.expand]="showMenu1 === 'pages'" class="nested">
+                <ul class="submenu">
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-monument"></i>&nbsp;
+                            <span>{{ 'Data Excellence' }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-monument"></i>&nbsp;
+                            <span>{{ 'Execution Standards' }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-monument"></i>&nbsp;
+                            <span>{{ 'Budgets/Forecasts' }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-monument"></i>&nbsp;
+                            <span>{{ 'Market Intelligence' }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-monument"></i>&nbsp;
+                            <span>{{ 'Promotions' }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-monument"></i>&nbsp;
+                            <span>{{ 'Reports' }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </div>
+
+        <a (click)="onLoggedout()" [routerLinkActive]="['router-link-active']" class="list-group-item" routerLink="/auth/login">
+            <i class="fa fa-fw fa-stop"></i>&nbsp;
+            <span>{{ 'Log Out' }}</span>
+        </a>
+
+    </div>
+
+
+
+    <div (click)="toggleCollapsed()" [ngClass]="{ collapsed: collapsed }" class="toggle-button">
+        <i class="fa fa-fw fa-angle-double-{{ collapsed ? 'right' : 'left' }}"></i>&nbsp;
+        <span>{{ 'Collapse Sidebar' }}</span>
+    </div>
+</nav>
