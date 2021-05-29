@@ -59,7 +59,7 @@ export class AuthService {
     })
   };
 
-  readonly BaseURI = 'https://edoctor.pythonanywhere.com/api';
+  readonly BaseURI = 'https://guardianangel.pythonanywhere.com/api';
 
   readonly testUrl = 'http://localhost:8000/api';
 
@@ -69,14 +69,14 @@ export class AuthService {
   // }
 
   login(formData): Observable<any> {
-    return this.http.post(this.testUrl + '/auth/token/', formData, this.httpLogin);
+    return this.http.post(this.BaseURI + '/auth/token/', formData, this.httpLogin);
   }
 
   getUserProfile() {
-    return this.http.get(this.testUrl + '/UserProfile');
+    return this.http.get(this.BaseURI + '/UserProfile');
   }
 
   public register(formData){
-    return this.http.post(this.testUrl+ "/users/register/", formData, this.httpLogin)
+    return this.http.post(this.BaseURI+ "/users/register/", formData, this.httpLogin)
   }
 }

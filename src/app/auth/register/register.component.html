@@ -1,96 +1,3 @@
-<!-- <div class="container">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a [routerLink]="['/login']">Home</a></li>
-            <li class="breadcrumb-item"><a [routerLink]="['/login']">Login</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Registration</li>
-        </ol>
-    </nav>
-    <h2 class="header-style">E-doctor Registration</h2>
-    <hr>
-    <div *ngIf="!loading">
-
-        <form class="mb-4" autocomplete="off" [formGroup]="regForm" (ngSubmit)="saveRegister(regForm.value)">
-
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label>Username</label>
-                    <input type="text" placeholder="Username" class="form-control input-underline input-lg" formControlName="Username" name="Username" id="Username">
-                </div>
-                <div class="form-group col-md-6">
-                    <label>First name</label>
-                    <input type="text" placeholder="Firstname" class="form-control input-underline input-lg" formControlName="Firstname" name="Firstname" id="Firstname">
-                </div>
-                <div class="form-group col-md-6">
-                    <label>Last name</label>
-                    <input type="text" placeholder="Lastname" class="form-control input-underline input-lg" formControlName="Surname" name="Surname" id="Surname">
-                </div>
-                <div class="form-group col-md-6">
-                    <label>Phone number</label>
-                    <input type="text" placeholder="07750784XX" class="form-control input-underline input-lg" formControlName="PhoneNumber" name="PhoneNumber" id="PhoneNumber">
-                </div>
-                <div class="form-group col-md-6">
-                    <label>Email</label>
-                    <input type="email" placeholder="me@delta.co.zw" class="form-control input-underline input-lg" formControlName="Email" name="Email" id="Email">
-                </div>
-                <div class="form-group col-md-6">
-                    <label>Password</label>
-                    <input type="password" placeholder="*****************" class="form-control input-underline input-lg" name="Password" required formControlName="Password" name="Password" id="Password">
-                </div>
-                <div class="form-group col-md-6">
-                    <label>Confirm Password</label>
-                    <input type="password" placeholder="*****************" class="form-control input-underline input-lg" formControlName="ConfirmPassword" name="ConfirmPassword" id="ConfirmPassword">
-                </div>
-
-
-                <div class="form-group col-md-6">
-                    <label>Employee</label>
-                    <select class="form-control input-underline input-lg" formControlName="Employee" name="Employee" id="Employee">
-                        <option value="true">True</option>
-                        <option value="false">False</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-6" *ngIf="regForm.get('Employee').value == 'true'">
-                    <label>EmpNo</label>
-                    <input type="text" placeholder="EmpNo" class="form-control input-underline input-lg" formControlName="EmpNo" name="EmpNo" id="EmpNo">
-                </div>
-                <div class="form-group col-md-6">
-                    <label>Distance</label>
-                    <select class="form-control input-underline input-lg" formControlName="Race" name="Race" id="Race">
-                        <option value="5 km">5 km</option>
-                        <option value="10 km">10 km</option>
-                        <option value="21 km">21 km</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-6">
-                    <label>NextOfKin</label>
-                    <input type="text" placeholder="NextOfKin" class="form-control input-underline input-lg" formControlName="NextOfKin" name="NextOfKin" id="NextOfKin">
-                </div>
-                <div class="form-group col-md-6">
-                    <label>NextOfKinContact</label>
-                    <input type="text" placeholder="0775089XX" class="form-control input-underline input-lg" name="NextOfKinContact" required formControlName="NextOfKinContact" name="NextOfKinContact" id="NextOfKinContact">
-                    <input type="hidden" placeholder="" class="form-control input-underline input-lg" formControlName="Route" name="Route" id="Route">
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group col-md-8 offset-md-2">
-                    <button type="submit" class="btn btn-lg btn-block btn-primary">Submit</button>
-                </div>
-            </div>
-        </form>
-
-    </div>
-
-    <div *ngIf="loading" class="text text-center myloader">
-        <img height="200" width="auto" src="assets/images/tenor.gif">
-        <div class="text">
-            Loading....
-        </div>
-    </div>
-</div> -->
-
-
 <body class="account-page">
 
     <!-- Main Wrapper -->
@@ -115,7 +22,7 @@
                                 </div>
                                 <div class="col-md-12 col-lg-6 login-right">
                                     <div class="login-header">
-                                        <h3>Register <span>E-Doctor</span></h3>
+                                        <h3>Register <span>E-Healthcare</span></h3>
                                     </div>
                                     <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
                                         <div class="form-group form-focus">

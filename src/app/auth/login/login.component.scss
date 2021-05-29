@@ -1,4 +1,5 @@
-$topnav-background-color: rgb(9, 50, 96);
+// $topnav-background-color: rgb(9, 50, 96);#043c84
+$topnav-background-color: #043c84;
 :host {
     display: block;
 }
@@ -55,6 +56,7 @@ $topnav-background-color: rgb(9, 50, 96);
         outline: none;
     }
     h1 {
+        color: rgba(255, 255, 255, 1);
         font-weight: 300;
         margin-top: 15px;
         margin-bottom: 8px;
@@ -92,12 +94,24 @@ $topnav-background-color: rgb(9, 50, 96);
     .outline {
         border: 2px solid #c79c1c;
         padding: 1em;
-        background-color: #0b4b8b;
-        background: rgb(9, 50, 96);
+        // background-color: #0b4b8b;
+        // background: rgb(9, 50, 96);
+        background-color: #043c84;
+        background: #043c84;
         opacity: 0.9;
     }
     #loginbtn:hover {
         background-color: #c79c1c;
         color: rgb(9, 50, 96);
+    }
+    #loginbtn {
+        background-color: white;
+        color: rgb(9, 50, 96);
+    }
+    #btnRegister:hover {
+        color: #c79c1c;
+    }
+    .register-btn:hover {
+        color: #c79c1c;
     }
 }
