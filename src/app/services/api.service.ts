@@ -24,7 +24,8 @@ export class ApiService {
   };
 
   readonly BaseURI = 'https://guardianangel.pythonanywhere.com/api';
-  readonly portBaseUrl = 'https://guardianangel.pythonanywhere.com/api';
+  // readonly portBaseUrl = 'https://guardianangel.pythonanywhere.com/api';
+  readonly portBaseUrl = 'http://localhost:8000/api';
 
   constructor(private http: HttpClient) { }
 

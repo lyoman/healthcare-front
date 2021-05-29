@@ -31,12 +31,15 @@ export class ViewPatientComponent implements OnInit {
   }
 
   race = {
-    firstname: this.route.snapshot.paramMap.get('firstname'),
-    surname: this.route.snapshot.paramMap.get('surname'),
-    email: this.route.snapshot.paramMap.get('email'),
-    phoneNumber: this.route.snapshot.paramMap.get('phoneNumber'),
-    race: this.route.snapshot.paramMap.get('race'),
+    patient_name: this.route.snapshot.paramMap.get('patient_name'),
+    patient_id: this.route.snapshot.paramMap.get('patient_id'),
+    heart_rate: this.route.snapshot.paramMap.get('heart_rate'),
+    respiratory_rate: this.route.snapshot.paramMap.get('respiratory_rate'),
     temperature: this.route.snapshot.paramMap.get('temperature'),
+    blood_pressure: this.route.snapshot.paramMap.get('blood_pressure'),
+    active: this.route.snapshot.paramMap.get('active'),
+    updated: this.route.snapshot.paramMap.get('updated'),
+    timestamp: this.route.snapshot.paramMap.get('timestamp'),
   }
 
 }

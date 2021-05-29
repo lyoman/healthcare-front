@@ -62,8 +62,8 @@ export class PatientsComponent implements OnInit {
     this.loading = true;
     this.apiService.GetData('/patients').subscribe(data => {
       this.loading = false;
-      console.log('all patients', data);
-      this.userResults = data;
+      console.log('all patients', data['results']);
+      this.userResults = data['results'];
     },
       err => {
         console.log(err)

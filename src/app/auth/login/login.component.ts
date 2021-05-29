@@ -69,7 +69,8 @@ export class LoginComponent implements OnInit {
           this.token = data['token'];
           this.getUserDetails = jwt_decode(data['token']);
           console.log("getUserDetails", this.getUserDetails);
-          localStorage.setItem('user', JSON.stringify(data));
+          localStorage.setItem('user', JSON.stringify(this.getUserDetails));
+          localStorage.setItem('user_id', JSON.stringify(this.getUserDetails['user_id']));
 
           this.toastr.success('Welcome!', 'Authentication successful.');
           localStorage.setItem('isLoggedin', 'true');

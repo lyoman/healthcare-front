@@ -2,11 +2,11 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a [routerLink]="['/dashboard']">Dashboard</a></li>
-            <li class="breadcrumb-item"><a [routerLink]="['/participants']">Participants-List</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Full Participant Details</li>
+            <li class="breadcrumb-item"><a [routerLink]="['/patients']">Patients Records-List</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Full Patient Details</li>
         </ol>
     </nav>
-    <h2 class="header-style">Full Participant Details</h2>
+    <h2 class="header-style">Full Patient Details</h2>
     <hr>
 
 
@@ -22,16 +22,21 @@
                 <tbody>
                     <tr>
                         <td>Patient Name</td>
-                        <td>{{ race.firstname }}</td>
+                        <td>{{ race.patient_name }}</td>
                     </tr>
                     <tr>
                         <td>Patient_ID</td>
-                        <td>{{ race.surname }}</td>
+                        <td>{{ race.patient_id }}</td>
                     </tr>
 
                     <tr>
                         <td>Heart Rate</td>
-                        <td><a href="mailto: {{ race.email }}" target="_blank">{{ race.email }}</a></td>
+                        <td>{{ race.heart_rate }}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Blood Pressure</td>
+                        <td>{{ race.blood_pressure }}</td>
                     </tr>
 
                     <!-- employee empNo, firstname, nextOfKim, nextOfKinContact, phoneNumber, race, route, surname, userName -->
@@ -47,19 +52,25 @@
                     <th>Details</th>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Blood Pressure</td>
-                        <td><a href="tel: {{ race.phoneNumber }}" target="_blank">{{ race.phoneNumber }}</a></td>
-                    </tr>
 
                     <tr>
                         <td>Respiratory Rate</td>
-                        <td>{{ race.race }}</td>
+                        <td>{{ race.respiratory_rate }}</td>
                     </tr>
 
                     <tr>
                         <td>Temperature</td>
                         <td>{{ race.temperature }}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Timestamp</td>
+                        <td>{{ race.timestamp | date }} {{ race.timestamp | date: 'shortTime' }}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Updated</td>
+                        <td>{{ race.updated | date }} {{ race.updated | date: 'shortTime' }}</td>
                     </tr>
                 </tbody>
             </table>

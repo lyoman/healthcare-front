@@ -2,10 +2,10 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a [routerLink]="['/dashboard']">Dashboard</a></li>
-            <li class="breadcrumb-item active" aria-current="page">All Users</li>
+            <li class="breadcrumb-item active" aria-current="page">All Patient Records</li>
         </ol>
     </nav>
-    <h2 class="header-style">All Registered Doctors, Physicians, etc...</h2>
+    <h2 class="header-style">All Patient Records</h2>
     <hr>
 
     <div class="row">
@@ -24,7 +24,8 @@
                     <th>Heart Rate</th>
                     <th>Blood Pressure</th>
                     <th>Respiratory Rate</th>
-                    <th>Temperature</th>
+                    <th>Temperature (<sup>o</sup>C)</th>
+                    <th>is_active</th>
                     <th>View</th>
                 </tr>
             </thead>
@@ -32,23 +33,25 @@
 
                 <tr class="details" *ngFor="let m of userResults  | filter: searchText | slice: (page-1) * pageSize : page * pageSize">
                     <td>
-                        <p>{{ m.firstname }}</p>
+                        <p>{{ m.patient_name }}</p>
                     </td>
                     <td>
-                        <p>{{ m.surname }}</p>
+                        <p>{{ m.patient_id }}</p>
                     </td>
                     <td>
-                        <p>{{ m.email }}</p>
+                        <p>{{ m.heart_rate }}</p>
                     </td>
                     <td>
-                        <p>{{ m.phoneNumber }}</p>
+                        <p>{{ m.blood_pressure }}</p>
                     </td>
-
                     <td>
-                        <p>{{ m.race }}</p>
+                        <p>{{ m.respiratory_rate }}</p>
                     </td>
                     <td>
                         <p>{{ m.temperature }}</p>
+                    </td>
+                    <td>
+                        <p>{{ m.active }}</p>
                     </td>
                     <td>
                         <button [routerLink]=" ['details', m]" class="btn btn-success">
