@@ -6,107 +6,24 @@
         </a>
         <a [routerLinkActive]="['router-link-active']" [routerLink]="['/register']" class="list-group-item">
             <i class="fa fa-fw fa-wrench"></i>&nbsp;
-            <span>{{ 'Registration' }}</span>
+            <span>{{ 'Profile' }}</span>
         </a>
-        <!-- <a [routerLinkActive]="['router-link-active']" class="list-group-item" routerLink="/packaging-dashboard/registration">
+
+        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/register']" class="list-group-item">
             <i class="fa fa-fw fa-address-card"></i>&nbsp;
-            <span>{{ 'Brand Development' }}</span>
+            <span>{{ 'All Users' }}</span>
         </a>
-        <a [routerLinkActive]="['router-link-active']" class="list-group-item" routerLink="/osh/risk-assessment/pretask">
+
+        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/register']" class="list-group-item">
             <i class="fa fa-fw fa-plus-square"></i>&nbsp;
-            <span>{{ 'Insights' }}</span>
+            <span>{{ 'Patients' }}</span>
         </a>
-        <a [routerLinkActive]="['router-link-active']" class="list-group-item" routerLink="/osh/risk-assessment/issue-based">
-            <i class="fa fa-fw fa-plus-circle"></i>&nbsp;
-            <span>{{ 'Brand Campaigns' }}</span>
-        </a>
-        <a [routerLinkActive]="['router-link-active']" class="list-group-item" routerLink="/suggestion-scheme">
+
+        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/register']" class="list-group-item">
             <i class="fa fa-fw fa-clipboard"></i>&nbsp;
-            <span>{{ 'Agency Management' }}</span>
-        </a> -->
+            <span>{{ 'Approval Requets' }}</span>
+        </a>
 
-
-        <div class="nested-menu">
-            <a (click)="addExpandClass('pages')" class="list-group-item">
-                <i class="fa fa-fw fa-address-card"></i>&nbsp;
-                <span>{{ 'Marketing' }}</span>
-            </a>
-            <li [class.expand]="showMenu === 'pages'" class="nested">
-                <ul class="submenu">
-                    <li>
-                        <a [routerLinkActive]="['router-link-active']" routerLink="/marketing/brand-devpt">
-                            <i class="fa fa-monument"></i>&nbsp;
-                            <span>{{ 'Brand Development' }}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a [routerLinkActive]="['router-link-active']" routerLink="/marketing/insights">
-                            <i class="fa fa-monument"></i>&nbsp;
-                            <span>{{ 'Insights' }}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a [routerLinkActive]="['router-link-active']" routerLink="/marketing/campaigns">
-                            <i class="fa fa-monument"></i>&nbsp;
-                            <span>{{ 'Brand Campaigns' }}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a [routerLinkActive]="['router-link-active']" routerLink="/marketing/agency">
-                            <i class="fa fa-monument"></i>&nbsp;
-                            <span>{{ 'Agency Management' }}</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-        </div>
-
-        <div class="nested-menu">
-            <a (click)="addExpandClass1('pages')" class="list-group-item">
-                <i class="fa fa-fw fa-plus-square"></i>&nbsp;
-                <span>{{ 'Channel' }}</span>
-            </a>
-            <li [class.expand]="showMenu1 === 'pages'" class="nested">
-                <ul class="submenu">
-                    <li>
-                        <a href="javascript:void(0)">
-                            <i class="fa fa-monument"></i>&nbsp;
-                            <span>{{ 'Data Excellence' }}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)">
-                            <i class="fa fa-monument"></i>&nbsp;
-                            <span>{{ 'Execution Standards' }}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)">
-                            <i class="fa fa-monument"></i>&nbsp;
-                            <span>{{ 'Budgets/Forecasts' }}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)">
-                            <i class="fa fa-monument"></i>&nbsp;
-                            <span>{{ 'Market Intelligence' }}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)">
-                            <i class="fa fa-monument"></i>&nbsp;
-                            <span>{{ 'Promotions' }}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)">
-                            <i class="fa fa-monument"></i>&nbsp;
-                            <span>{{ 'Reports' }}</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-        </div>
 
         <a (click)="onLoggedout()" [routerLinkActive]="['router-link-active']" class="list-group-item" routerLink="/auth/login">
             <i class="fa fa-fw fa-stop"></i>&nbsp;
