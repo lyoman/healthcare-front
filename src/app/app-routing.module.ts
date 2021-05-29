@@ -35,6 +35,30 @@ const routes: Routes = [
 
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule) },
 
+  {
+    path: 'approvals',
+    loadChildren: () => import('./approvals/approvals.module').then((m) => m.ApprovalsModule),
+    canActivate: [AuthGuard]
+  },
+
+  {
+    path: 'patients',
+    loadChildren: () => import('./patients/patients.module').then((m) => m.PatientsModule),
+    canActivate: [AuthGuard]
+  },
+
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then((m) => m.ProfileModule),
+    canActivate: [AuthGuard]
+  },
+
+  {
+    path: 'users',
+    loadChildren: () => import('./users/users.module').then((m) => m.UsersModule),
+    canActivate: [AuthGuard]
+  },
+
   // {
   //   path: 'error',
   //   loadChildren: () => import('./server-error/server-error.module').then((m) => m.ServerErrorModule)

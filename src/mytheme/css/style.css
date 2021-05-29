@@ -142,9 +142,10 @@ h6 {
     font-size: 0.875rem;
 }
 
-a {
+
+/* a {
     color: #2E3842;
-}
+} */
 
 a:hover {
     color: #09dca4;

@@ -1,0 +1,70 @@
+<div class="">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/dashboard']">Dashboard</a></li>
+            <li class="breadcrumb-item"><a [routerLink]="['/participants']">Participants-List</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Full Participant Details</li>
+        </ol>
+    </nav>
+    <h2 class="header-style">Full Participant Details</h2>
+    <hr>
+
+
+    <div class="row">
+        <!-- <h3 class="content-style" style="text-align: center;width: 100%;">{{ 'Submitted Results' }}</h3> -->
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <table class="table table-responsive table-hover table-striped" *ngIf="race">
+                <thead>
+                    <th>Variable Name</th>
+                    <th>Details</th>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Patient Name</td>
+                        <td>{{ race.firstname }}</td>
+                    </tr>
+                    <tr>
+                        <td>Patient_ID</td>
+                        <td>{{ race.surname }}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Heart Rate</td>
+                        <td><a href="mailto: {{ race.email }}" target="_blank">{{ race.email }}</a></td>
+                    </tr>
+
+                    <!-- employee empNo, firstname, nextOfKim, nextOfKinContact, phoneNumber, race, route, surname, userName -->
+
+                </tbody>
+            </table>
+
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <table class="table table-responsive table-hover table-striped" *ngIf="race">
+                <thead>
+                    <th>Variable Name</th>
+                    <th>Details</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Blood Pressure</td>
+                        <td><a href="tel: {{ race.phoneNumber }}" target="_blank">{{ race.phoneNumber }}</a></td>
+                    </tr>
+
+                    <tr>
+                        <td>Respiratory Rate</td>
+                        <td>{{ race.race }}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Temperature</td>
+                        <td>{{ race.temperature }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</div>
