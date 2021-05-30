@@ -2,10 +2,10 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a [routerLink]="['/dashboard']">Dashboard</a></li>
-            <li class="breadcrumb-item active" aria-current="page">All Users</li>
+            <li class="breadcrumb-item active" aria-current="page">All Approval Requests</li>
         </ol>
     </nav>
-    <h2 class="header-style">All Registered Doctors, Physicians, etc...</h2>
+    <h2 class="header-style">All Approval Requests</h2>
     <hr>
 
     <div class="row">
@@ -19,50 +19,34 @@
         <table class="table table-bordered table-responsive table-striped table-hover raw-materials" *ngIf="userResults">
             <thead>
                 <tr>
-                    <th>Firstname</th>
-                    <th>Surname</th>
+                    <th>Username</th>
                     <th>Email</th>
-                    <th>Phone Number</th>
-                    <th>race</th>
-                    <th>Race Number</th>
-                    <th>Route</th>
-                    <th>Next Of Kin</th>
-                    <th>Next Of Kin Contact</th>
-                    <th>View</th>
+                    <th>Approve</th>
+                    <th>Reject</th>
+                    <th>Details</th>
                 </tr>
             </thead>
             <tbody>
 
                 <tr class="details" *ngFor="let m of userResults  | filter: searchText | slice: (page-1) * pageSize : page * pageSize">
                     <td>
-                        <p>{{ m.firstname }}</p>
+                        <p>{{ m.user.username }}</p>
                     </td>
                     <td>
-                        <p>{{ m.surname }}</p>
+                        <p>{{ m.user.email }}</p>
                     </td>
                     <td>
-                        <p>{{ m.email }}</p>
-                    </td>
-                    <td>
-                        <p>{{ m.phoneNumber }}</p>
+                        <button class="btn btn-primary">
+                    <i class="fa fa-edit"></i>
+                    </button>&nbsp;
                     </td>
 
                     <td>
-                        <p>{{ m.race }}</p>
-                    </td>
-                    <td>
-                        <p>{{ m.raceNumber }}</p>
-                    </td>
-                    <td>
-                        <p>{{ m.route }}</p>
+                        <button class="btn btn-danger">
+                    <i class="fa fa-trash"></i>
+                    </button>&nbsp;
                     </td>
 
-                    <td>
-                        <p>{{ m.nextOfKin }}</p>
-                    </td>
-                    <td>
-                        <p>{{ m.nextOfKinContact }}</p>
-                    </td>
                     <td>
                         <button [routerLink]=" ['details', m]" class="btn btn-success">
                     <i class="fa fa-play"></i>

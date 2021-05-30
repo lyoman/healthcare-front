@@ -33,10 +33,11 @@ export class HeaderComponent implements OnInit {
 
     ngOnInit() {
         if(localStorage.getItem('token') == null){
-            this.router.navigateByUrl('/login');
+            this.router.navigateByUrl('/auth/login');
         }
         this.pushRightClass = 'push-right';
         this.user = JSON.parse(localStorage.getItem('user'));
+        console.log("user", this.user);
         // this.firstName = this.user.firstName;
         // this.lastName = this.user.lastName;
         this.firstName = "Leo";

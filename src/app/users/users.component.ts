@@ -52,9 +52,9 @@ export class UsersComponent implements OnInit {
     this.getResults();
     this.user = JSON.parse(localStorage.getItem('user'));
 
-    // if (JSON.parse(localStorage.getItem("isAdmin")) != true) {
-    //   this.location.back();
-    // }
+    if (JSON.parse(localStorage.getItem("is_superuser")) != true) {
+      this.location.back();
+    }
   }
 
 

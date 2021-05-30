@@ -25,21 +25,18 @@ export class ViewApprovalComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('user'));
-    if(JSON.parse(localStorage.getItem("isAdmin")) != true) {
+    if (JSON.parse(localStorage.getItem("is_superuser")) != true) {
       this.location.back();
     }
   }
 
   race = {
-    firstname: this.route.snapshot.paramMap.get('firstname'),
-    surname: this.route.snapshot.paramMap.get('surname'),
+    username: this.route.snapshot.paramMap.get('username'),
     email: this.route.snapshot.paramMap.get('email'),
-    phoneNumber: this.route.snapshot.paramMap.get('phoneNumber'),
-    race: this.route.snapshot.paramMap.get('race'),
-    raceNumber: this.route.snapshot.paramMap.get('raceNumber'),
-    route: this.route.snapshot.paramMap.get('route'),
-    nextOfKin: this.route.snapshot.paramMap.get('nextOfKin'),
-    nextOfKinContact: this.route.snapshot.paramMap.get('nextOfKinContact'),
+    status: this.route.snapshot.paramMap.get('status'),
+    approvedby: this.route.snapshot.paramMap.get('approvedby'),
+    updated: this.route.snapshot.paramMap.get('updated'),
+    timestamp: this.route.snapshot.paramMap.get('timestamp'),
   }
 
 

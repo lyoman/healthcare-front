@@ -9,7 +9,7 @@
             <span>{{ 'Profile' }}</span>
         </a>
 
-        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/users']" class="list-group-item">
+        <a *ngIf="is_superuser" [routerLinkActive]="['router-link-active']" [routerLink]="['/users']" class="list-group-item">
             <i class="fa fa-fw fa-address-card"></i>&nbsp;
             <span>{{ 'All Users' }}</span>
         </a>
@@ -19,7 +19,7 @@
             <span>{{ 'Patients' }}</span>
         </a>
 
-        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/approvals']" class="list-group-item">
+        <a *ngIf="is_superuser" [routerLinkActive]="['router-link-active']" [routerLink]="['/approvals']" class="list-group-item">
             <i class="fa fa-fw fa-clipboard"></i>&nbsp;
             <span>{{ 'Approval Requets' }}</span>
         </a>

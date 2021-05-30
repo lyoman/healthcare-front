@@ -52,17 +52,17 @@ export class ApprovalsComponent implements OnInit {
 
     this.user = JSON.parse(localStorage.getItem('user'));
 
-    // if(JSON.parse(localStorage.getItem("isAdmin")) != true) {
-    //   this.location.back();
-    // }
+    if (JSON.parse(localStorage.getItem("is_superuser")) != true) {
+      this.location.back();
+    }
   }
 
 
   getResults() {
     this.loading = true;
-    this.apiService.GetData('/users').subscribe(data => {
+    this.apiService.GetData('/approvals').subscribe(data => {
       this.loading = false;
-      console.log('all users', data);
+      console.log('all requests', data);
       this.userResults = data;
     },
       err => {

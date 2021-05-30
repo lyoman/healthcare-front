@@ -25,9 +25,9 @@ export class ViewUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('user'));
-    // if(JSON.parse(localStorage.getItem("isAdmin")) != true) {
-    //   this.location.back();
-    // }
+    if (JSON.parse(localStorage.getItem("is_superuser")) != true) {
+      this.location.back();
+    }
   }
 
   race = {

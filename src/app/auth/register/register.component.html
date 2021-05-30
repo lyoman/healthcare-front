@@ -1,173 +1,88 @@
-<body class="account-page">
+<div [@routerTransition] class="login-page" style="background: url('assets/images/bg.png');background-repeat: repeat-y;background-size: cover;height: 100%;">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a [routerLink]="['/auth/login']">Login</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Registration</li>
+            </ol>
+        </nav>
+        <h2 class="header-style">E-Health System Registration</h2>
+        <!-- <h3 class="content-style" style="text-align: center;">{{ 'PlantName' }}</h3> -->
+        <hr>
+        <div *ngIf="!loading">
 
-    <!-- Main Wrapper -->
-    <div class="main-wrapper">
+            <form class="mb-4" autocomplete="off" [formGroup]="regForm" (ngSubmit)="saveRegister(regForm.value)">
 
-        <!-- Header -->
-        <app-auth-header></app-auth-header>
-        <!-- /Header -->
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>First name</label>
+                        <input type="text" placeholder="first_name" class="form-control input-underline input-lg" formControlName="first_name" name="first_name" id="first_name">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Last name</label>
+                        <input type="text" placeholder="last_name" class="form-control input-underline input-lg" formControlName="last_name" name="last_name" id="last_name">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Phone number</label>
+                        <input type="text" placeholder="07750784XX" class="form-control input-underline input-lg" formControlName="phone_number" name="phone_number" id="phone_number">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Email</label>
+                        <input type="email" placeholder="me@mail.com" class="form-control input-underline input-lg" formControlName="email" name="email" id="email">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Username</label>
+                        <input type="text" placeholder="username" class="form-control input-underline input-lg" formControlName="username" name="username" id="username">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Password</label>
+                        <input type="password" placeholder="*****************" class="form-control input-underline input-lg" name="password" required formControlName="password" id="password">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Confirm Password</label>
+                        <input type="password" placeholder="*****************" class="form-control input-underline input-lg" formControlName="confirmpassword" name="confirmpassword" id="confirmpassword">
+                    </div>
 
-        <!-- Page Content -->
-        <div class="content">
-            <div class="container-fluid">
+                    <div class="form-group col-md-6">
+                        <label>is_doctor</label>
+                        <select class="form-control input-underline input-lg" formControlName="is_doctor" name="is_doctor" id="is_doctor">
+                            <option value="true">True</option>
+                            <option value="false">False</option>
+                        </select>
+                    </div>
 
-                <div class="row">
-                    <div class="col-md-8 offset-md-2">
+                    <div class="form-group col-md-6">
+                        <label>is_specialist</label>
+                        <select class="form-control input-underline input-lg" formControlName="is_specialist" name="is_specialist" id="is_specialist">
+                            <option value="true">True</option>
+                            <option value="false">False</option>
+                        </select>
+                    </div>
 
-                        <!-- Login Tab Content -->
-                        <div class="account-content" *ngIf="!loading">
-                            <div class="row align-items-center justify-content-center">
-                                <div class="col-md-7 col-lg-6 login-left">
-                                    <img src="assets/images/login/login-banner.png" class="img-fluid" alt="E-Doctor Login">
-                                </div>
-                                <div class="col-md-12 col-lg-6 login-right">
-                                    <div class="login-header">
-                                        <h3>Register <span>E-Healthcare</span></h3>
-                                    </div>
-                                    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-                                        <div class="form-group form-focus">
-                                            <input type="text" class="form-control floating" class="form-control" name="username" [(ngModel)]="form.username" [ngModelOptions]="{standalone: true}" required #username="ngModel">
-                                            <label class="focus-label">Username</label>
-                                            <div class="alert alert-danger" role="alert" *ngIf="f.submitted && username.invalid">
-                                                Username is required!
-                                            </div>
-                                        </div>
-                                        <div class="form-group form-focus">
-                                            <input type="text" class="form-control floating" [(ngModel)]="form.first_name" required minlength="3" #first_name="ngModel" [ngModelOptions]="{standalone: true}">
-                                            <label class="focus-label">First Name</label>
-                                            <div class="alert alert-danger" role="alert" *ngIf="f.submitted && first_name.invalid">
-                                                <div *ngIf="first_name.errors.required">First Name is required</div>
-                                                <div *ngIf="first_name.errors.minlength">
-                                                    First Name must be at least 3 characters
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group form-focus">
-                                            <input type="text" class="form-control floating" [(ngModel)]="form.last_name" required minlength="3" #last_name="ngModel" [ngModelOptions]="{standalone: true}">
-                                            <label class="focus-label">Last Name</label>
-                                            <div class="alert alert-danger" role="alert" *ngIf="f.submitted && last_name.invalid">
-                                                <div *ngIf="last_name.errors.required">Last Name is required</div>
-                                                <div *ngIf="last_name.errors.minlength">
-                                                    Last Name must be at least 3 characters
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group form-focus">
-                                            <input type="text" class="form-control floating" class="form-control" name="email" [(ngModel)]="form.email" [ngModelOptions]="{standalone: true}" required #email="ngModel">
-                                            <label class="focus-label">Email</label>
-                                            <div class="alert alert-danger" role="alert" *ngIf="f.submitted && email.invalid">
-                                                Email is required!
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group form-focus">
-                                            <!-- <input type="text" class="form-control floating" type="text" class="form-control" name="gender" [(ngModel)]="form.gender" [ngModelOptions]="{standalone: true}" required #gender="ngModel"> -->
-                                            <select class="form-control floating" class="form-control" name="gender" [(ngModel)]="form.gender" [ngModelOptions]="{standalone: true}" required #gender="ngModel">
-                                                <option value="male">Male</option>
-                                                <option value="female">Female</option>
-                                            </select>
-                                            <label class="focus-label">Gender</label>
-                                            <div class="alert alert-danger" role="alert" *ngIf="f.submitted && gender.invalid">
-                                                Gender is required!
-                                            </div>
-                                        </div>
-                                        <div class="form-group form-focus">
-                                            <textarea type="text" class="form-control floating" [(ngModel)]="form.address" required #address="ngModel" [ngModelOptions]="{standalone: true}"></textarea>
-                                            <label class="focus-label">Address</label>
-                                            <div class="alert alert-danger" role="alert" *ngIf="f.submitted && address.invalid">
-                                                <div *ngIf="address.errors.required">Address is required</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group form-focus">
-                                            <input type="date" class="form-control floating" class="form-control" name="dob" [(ngModel)]="form.dob" [ngModelOptions]="{standalone: true}" required #dob="ngModel">
-                                            <label class="focus-label">DOB</label>
-                                            <div class="alert alert-danger" role="alert" *ngIf="f.submitted && dob.invalid">
-                                                DOB is required!
-                                            </div>
-                                        </div>
-                                        <div class="form-group form-focus">
-                                            <input type="number" class="form-control floating" [(ngModel)]="form.phone_number" required minlength="6" #phone_number="ngModel" [ngModelOptions]="{standalone: true}">
-                                            <label class="focus-label">Phone Number</label>
-                                            <div class="alert alert-danger" role="alert" *ngIf="f.submitted && phone_number.invalid">
-                                                <div *ngIf="phone_number.errors.required">PhoneNumber is required</div>
-                                                <div *ngIf="phone_number.errors.minlength">
-                                                    PhoneNumber must be at least 6 characters
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group form-focus">
-                                            <input type="text" class="form-control floating" class="form-control" name="next_of_kin" [(ngModel)]="form.next_of_kin" [ngModelOptions]="{standalone: true}" required #next_of_kin="ngModel">
-                                            <label class="focus-label">Next of Kin Phone Number</label>
-                                            <div class="alert alert-danger" role="alert" *ngIf="f.submitted && next_of_kin.invalid">
-                                                Next of Kin Phone number is required!
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group form-focus">
-                                            <input type="password" class="form-control floating" [(ngModel)]="form.password" required minlength="6" #password="ngModel" [ngModelOptions]="{standalone: true}">
-                                            <label class="focus-label">Password</label>
-                                            <div class="alert alert-danger" role="alert" *ngIf="f.submitted && password.invalid">
-                                                <div *ngIf="password.errors.required">Password is required</div>
-                                                <div *ngIf="password.errors.minlength">
-                                                    Password must be at least 6 characters
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group form-focus">
-                                            <input type="password" class="form-control floating" [(ngModel)]="form.confirmation_password" required minlength="6" #confirmation_password="ngModel" [ngModelOptions]="{standalone: true}">
-                                            <label class="focus-label">Confirmation Password</label>
-                                            <div class="alert alert-danger" role="alert" *ngIf="f.submitted && confirmation_password.invalid">
-                                                <div *ngIf="confirmation_password.errors.required">Confirmation Password is required</div>
-                                                <div *ngIf="confirmation_password.errors.minlength">
-                                                    Confirm Password must be at least 6 characters
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="text-right">
-                                            <a class="forgot-link" [routerLink]="['/auth/forgot-password']">Forgot Password ?</a>
-                                        </div>
-                                        <button class="btn btn-primary btn-block btn-lg login-btn" type="submit">Register</button>
-
-                                        <div class="text-center dont-have">Already have an account? <a [routerLink]="['/auth/login']">Login</a></div>
-                                        <div class="form-group">
-                                            <div class="alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">
-                                                Login failed: {{ errorMessage }}
-                                                <!--, you need to verify your Email to login!-->
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div *ngIf="loading" class="text text-center" style="margin-top: 10%;">
-                            <img height="200" width="auto" src="assets/images/tenor.gif">
-                            <div class="text">
-                                Loading....
-                            </div>
-                        </div>
-
-                        <!-- /Login Tab Content -->
-
+                    <div class="form-group col-md-6">
+                        <label>is_physician</label>
+                        <select class="form-control input-underline input-lg" formControlName="is_physician" name="is_physician" id="is_physician">
+                            <option value="true">True</option>
+                            <option value="false">False</option>
+                        </select>
                     </div>
                 </div>
 
-            </div>
+                <div class="form-row">
+                    <div class="form-group col-md-8 offset-md-2">
+                        <button type="submit" class="btn btn-lg btn-block btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
 
         </div>
-        <!-- /Page Content -->
 
-        <!-- Footer -->
-        <app-auth-footer></app-auth-footer>
-        <!-- /Footer -->
-
+        <div *ngIf="loading" class="text text-center myloader">
+            <img height="200" width="auto" src="assets/images/tenor.gif">
+            <div class="text">
+                Loading....
+            </div>
+        </div>
     </div>
-    <!-- /Main Wrapper -->
 
-</body>
+</div>

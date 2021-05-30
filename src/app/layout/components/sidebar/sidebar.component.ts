@@ -8,6 +8,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
+  is_superuser = JSON.parse(localStorage.getItem('is_superuser'));
+
   isActive: boolean;
   collapsed: boolean;
   showMenu: string;

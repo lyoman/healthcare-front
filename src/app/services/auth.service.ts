@@ -69,7 +69,7 @@ export class AuthService {
   // }
 
   login(formData): Observable<any> {
-    return this.http.post(this.BaseURI + '/auth/token/', formData, this.httpLogin);
+    return this.http.post(this.testUrl + '/auth/token/', formData, this.httpLogin);
   }
 
   getUserProfile() {
@@ -77,6 +77,6 @@ export class AuthService {
   }
 
   public register(formData){
-    return this.http.post(this.BaseURI+ "/users/register/", formData, this.httpLogin)
+    return this.http.post(this.testUrl+ "/users/register/", formData, this.httpLogin)
   }
 }

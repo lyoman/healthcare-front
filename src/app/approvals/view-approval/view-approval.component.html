@@ -21,22 +21,17 @@
 
                 <tbody>
                     <tr>
-                        <td>First Name</td>
-                        <td>{{ race.firstname }}</td>
+                        <td>Username</td>
+                        <td>{{ race.username }}</td>
                     </tr>
                     <tr>
-                        <td>Last Name</td>
-                        <td>{{ race.surname }}</td>
+                        <td>Status</td>
+                        <td>{{ race.status }}</td>
                     </tr>
 
                     <tr>
                         <td>Email</td>
                         <td><a href="mailto: {{ race.email }}" target="_blank">{{ race.email }}</a></td>
-                    </tr>
-
-                    <tr>
-                        <td>Phone Number</td>
-                        <td><a href="tel: {{ race.phoneNumber }}" target="_blank">{{ race.phoneNumber }}</a></td>
                     </tr>
 
                     <!-- employee empNo, firstname, nextOfKim, nextOfKinContact, phoneNumber, race, route, surname, userName -->
@@ -53,27 +48,18 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Race</td>
-                        <td>{{ race.race }}</td>
+                        <td>Approvedby</td>
+                        <td>{{ race.approvedby }}</td>
                     </tr>
 
                     <tr>
-                        <td>raceNumber</td>
-                        <td>{{ race.raceNumber }}</td>
+                        <td>Timestamp</td>
+                        <td>{{ race.timestamp }}</td>
                     </tr>
 
                     <tr>
-                        <td>route</td>
-                        <td>{{ race.route }}</td>
-                    </tr>
-
-                    <tr>
-                        <td>nextOfKin</td>
-                        <td>{{ race.nextOfKin }}</td>
-                    </tr>
-                    <tr>
-                        <td>Next Of Kin Contact</td>
-                        <td><a href="tel: {{ race.nextOfKinContact }}" target="_blank">{{ race.nextOfKinContact }}</a></td>
+                        <td>Updated</td>
+                        <td>{{ race.updated }}</td>
                     </tr>
                 </tbody>
             </table>

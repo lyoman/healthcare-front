@@ -14,7 +14,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     UsersComponent,
     ViewUserComponent
   ],
-  imports: [
+  imports: [ 
     CommonModule,
     UsersRoutingModule,
     FormsModule,
