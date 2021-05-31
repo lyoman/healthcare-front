@@ -95,15 +95,23 @@ export class LoginComponent implements OnInit {
   getResults(id) {
     this.loading = true;
     this.apiService.GetData('/users/user_detail/'+id).subscribe(data => {
-      this.loading = false;
       console.log('user data', data);
       this.race = data;
-      localStorage.setItem('is_superuser', JSON.stringify(data['is_superuser']));
-      localStorage.setItem('is_staff', JSON.stringify(data['is_staff']));
-      localStorage.setItem('is_active', JSON.stringify(data['is_active']));
-      localStorage.setItem('is_specialist', JSON.stringify(data['is_specialist']));
-      localStorage.setItem('is_doctor', JSON.stringify(data['is_doctor']));
-      localStorage.setItem('is_physician', JSON.stringify(data['is_physician']));
+      if (this.race != null) {
+        this.loading = false;
+      } else {
+        this.loading = true;
+      }
+      localStorage.setItem('realdata', JSON.stringify(this.race));
+      console.log("data['is_superuser'])", this.race['is_superuser']);
+      localStorage.setItem('is_superuser', JSON.stringify(this.race['is_superuser']));
+      console.log("superuser", JSON.parse(localStorage.getItem('is_superuser')));
+      localStorage.setItem('is_staff', JSON.stringify(this.race['is_staff']));
+      localStorage.setItem('is_active', JSON.stringify(this.race['is_active']));
+      localStorage.setItem('is_specialist', JSON.stringify(this.race['is_specialist']));
+      localStorage.setItem('is_doctor', JSON.stringify(this.race['is_doctor']));
+      localStorage.setItem('is_physician', JSON.stringify(this.race['is_physician']));
+      location.reload();
     },
       err => {
         console.log(err)

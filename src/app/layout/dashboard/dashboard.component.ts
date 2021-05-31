@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/services/api.service';
@@ -15,16 +16,18 @@ export class DashboardComponent implements OnInit {
 
   is_superuser = JSON.parse(localStorage.getItem('is_superuser'));
   username = JSON.parse(localStorage.getItem("unique_name"));
+  realdata = JSON.parse(localStorage.getItem('realdata'));
 
   constructor(
     private apiService: ApiService,
     private toastr: ToastrService,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
     this.getResults();
     this.getUsers();
-    console.log("is_superuser", this.is_superuser);
+    console.log("is_superuser", JSON.parse(localStorage.getItem('is_superuser')));
   }
 
   getResults() {
