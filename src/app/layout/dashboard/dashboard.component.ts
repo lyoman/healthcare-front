@@ -13,6 +13,7 @@ export class DashboardComponent implements OnInit {
   loading: any;
   userResults = [];
   userDetails = [];
+  userApproval = [];
 
   is_superuser = JSON.parse(localStorage.getItem('is_superuser'));
   username = JSON.parse(localStorage.getItem("unique_name"));
@@ -27,6 +28,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.getResults();
     this.getUsers();
+    this.getApproval();
     console.log("is_superuser", JSON.parse(localStorage.getItem('is_superuser')));
   }
 
@@ -47,10 +49,26 @@ export class DashboardComponent implements OnInit {
 
   getUsers() {
     this.loading = true;
-    this.apiService.GetData('/users').subscribe(data => {
+    this.apiService.GetData('/users/?id='+JSON.parse(localStorage.getItem('user_id'))).subscribe(data => {
       this.loading = false;
-      console.log('all users', data);
+      console.log('one user', data);
       this.userDetails = data;
+    },
+      err => {
+        console.log(err)
+        this.loading = false;
+        this.toastr.error('Error', err.message);
+      }
+    );
+  }
+
+  getApproval() {
+    this.loading = true;
+    this.apiService.GetData('/approvals/?id='+JSON.parse(localStorage.getItem('user_id'))).subscribe(data => {
+      this.loading = false;
+      console.log('approvals', data);
+      this.userApproval = data['results'];
+      console.log('one approvals', this.userApproval);
     },
       err => {
         console.log(err)

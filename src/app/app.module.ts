@@ -18,8 +18,14 @@ import { PatientComponent } from './users/patient/patient.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AuthHeaderComponent } from './auth/components/auth-header/auth-header.component';
 import { AuthFooterComponent } from './auth/components/auth-footer/auth-footer.component';
+import { RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
 // import { CustomFormsModule } from 'ngx-custom-validators';
 // import  {  PdfViewerModule  }  from  'ng2-pdf-viewer';
+
+const routes: Routes = [
+
+];
 
 @NgModule({
   declarations: [
@@ -40,6 +46,7 @@ import { AuthFooterComponent } from './auth/components/auth-footer/auth-footer.c
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     FormsModule, 
+    RouterModule.forRoot(routes, { useHash: true }),  // .../#/crisis-center/
     MbscModule,
     MatSidenavModule,
     MatDividerModule,

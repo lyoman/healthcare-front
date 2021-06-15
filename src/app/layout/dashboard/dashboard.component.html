@@ -3,7 +3,7 @@
     <h3 class="header-style" style="text-align: center;" *ngIf="is_superuser">Welcome, Admin User</h3>
     <h3 class="header-style" style="text-align: center;" *ngIf="!is_superuser">Welcome {{ username }}</h3>
     <hr>
-    <div class="row">
+    <div class="row" *ngIf="!loading">
         <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 mt-4 align-items-center">
             <div class="card-deck">
                 <div class="card mb-4">
@@ -73,5 +73,13 @@
             </div>
         </div>
 
+    </div>
+
+
+    <div *ngIf="loading" class="text text-center" style="margin-top: 10%;">
+        <img height="200" width="auto" src="assets/images/tenor.gif">
+        <div class="text">
+            Loading....
+        </div>
     </div>
 </div>
