@@ -4,7 +4,7 @@
     <h3 class="header-style" style="text-align: center;" *ngIf="!is_superuser">Welcome {{ username }}</h3>
     <hr>
     <div class="row" *ngIf="!loading">
-        <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 mt-4 align-items-center">
+        <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 mt-4 align-items-center" *ngIf="is_superuser">
             <div class="card-deck">
                 <div class="card mb-4">
                     <a [routerLinkActive]="['router-link-active']" [routerLink]="['/patients']">
@@ -13,8 +13,76 @@
                         <div class="card-body">
                             <h4 class="card-title">Patient Records ({{ userResults.length }})</h4>
                             <small>
-                            <p class="card-text">View All Patient Records</p>
-                        </small>
+                                <p class="card-text">View All Patient Records</p>
+                            </small>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="userApproval.status == 'Approved' && is_superuser == false" class="col-sm-6 col-md-4 col-lg-3 col-xl-3 mt-4 align-items-center">
+            <div class="card-deck">
+                <div class="card mb-4">
+                    <a [routerLinkActive]="['router-link-active']" [routerLink]="['/patients']">
+                        <img class="card-img-top img-fluid" src="assets/images/patient.png" alt="packaging">
+
+                        <div class="card-body">
+                            <h4 class="card-title">Patient Records ({{ userResults.length }})</h4>
+                            <small>
+                                <p class="card-text">View All Patient Records</p>
+                            </small>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="count == 0 && is_superuser == false" class="col-sm-6 col-md-4 col-lg-3 col-xl-3 mt-4 align-items-center">
+            <div class="card-deck">
+                <div class="card mb-4">
+                    <a [routerLinkActive]="['router-link-active']" (click)="saveRequest()">
+                        <img class="card-img-top img-fluid" src="assets/images/patient.png" alt="packaging">
+
+                        <div class="card-body">
+                            <h4 class="card-title">Patient Records</h4>
+                            <small>
+                                <p class="card-text btn btn-primary"> Send Approval Request </p>
+                            </small>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="userApproval.status == 'Pending'" class="col-sm-6 col-md-4 col-lg-3 col-xl-3 mt-4 align-items-center">
+            <div class="card-deck">
+                <div class="card mb-4">
+                    <a [routerLinkActive]="['router-link-active']" (click)="pendingReq()">
+                        <img class="card-img-top img-fluid" src="assets/images/patient.png" alt="packaging">
+
+                        <div class="card-body">
+                            <h4 class="card-title">Patient Records</h4>
+                            <small>
+                                <p class="card-text btn btn-warning">Pending Approval</p>
+                            </small>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="userApproval.status == 'Rejected'" class="col-sm-6 col-md-4 col-lg-3 col-xl-3 mt-4 align-items-center">
+            <div class="card-deck">
+                <div class="card mb-4">
+                    <a [routerLinkActive]="['router-link-active']" [routerLink]="['/patients']">
+                        <img class="card-img-top img-fluid" src="assets/images/patient.png" alt="packaging">
+
+                        <div class="card-body">
+                            <h4 class="card-title">Patient Records</h4>
+                            <small>
+                                <p class="card-text btn btn-danger">Rejected Approval</p>
+                            </small>
                         </div>
                     </a>
                 </div>
@@ -30,13 +98,14 @@
                         <div class="card-body">
                             <h4 class="card-title">Approval Requets</h4>
                             <small>
-                          <p class="card-text">View all approval Requests</p>
-                      </small>
+                                <p class="card-text">View all approval Requests</p>
+                            </small>
                         </div>
                     </a>
                 </div>
             </div>
         </div>
+
 
         <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 mt-4 align-items-center" *ngIf="is_superuser">
             <div class="card-deck">
@@ -47,8 +116,8 @@
                         <div class="card-body">
                             <h4 class="card-title">View Users ({{ userDetails.length }})</h4>
                             <small>
-                            <p class="card-text">View All users list</p>
-                        </small>
+                                <p class="card-text">View All users list</p>
+                            </small>
                         </div>
                     </a>
                 </div>
@@ -65,8 +134,8 @@
                         <div class="card-body">
                             <h4 class="card-title">Profile</h4>
                             <small>
-                            <p class="card-text">View current profile</p>
-                        </small>
+                                <p class="card-text">View current profile</p>
+                            </small>
                         </div>
                     </a>
                 </div>

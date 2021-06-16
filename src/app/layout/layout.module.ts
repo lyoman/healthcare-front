@@ -1,4 +1,4 @@
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -8,9 +8,11 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProgressComponent } from './components/progress/progress.component';
 import { DndDirective } from './dnd.directive';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -26,6 +28,10 @@ import { DndDirective } from './dnd.directive';
     LayoutRoutingModule,
     NgbDropdownModule,
     FormsModule,
+    ReactiveFormsModule,
+    NgbModule,
+    Ng2SearchPipeModule,
+    ToastrModule,
   ]
 })
 export class LayoutModule { }

@@ -18,8 +18,21 @@ export class ApiService {
 
   httpPutOptions = {
     headers: new HttpHeaders({
-      Authorization: 'Bearer ' + localStorage.getItem('token')
+      'Accept': '*/*',
+      // 'Content-Type': 'text/plain',
+      'Content-Type': 'application/json',
+      Authorization: localStorage.getItem('token')
 
+    })
+  };
+
+  httpLogin = {
+    headers: new HttpHeaders({
+      'Accept': '*/*',
+      // 'Content-Type': 'text/plain',
+      'Content-Type': 'application/json',
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+      // 'Access-Control-Allow-Origin': '*'
     })
   };
 
@@ -29,7 +42,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  readonly testUrl = 'https://guardianangel.pythonanywhere.com/api';
+  // readonly testUrl = 'https://guardianangel.pythonanywhere.com/api';
 
 
   public GetData(endPoint: string): Observable<any> {
