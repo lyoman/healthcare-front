@@ -29,9 +29,9 @@ export class RegisterComponent implements OnInit {
       email: new FormControl({ value: '', disabled: false }, Validators.required),
       last_name: new FormControl({ value: '', disabled: false }, Validators.required),
       first_name: new FormControl({ value: '', disabled: false }, Validators.required),
-      is_doctor: new FormControl({ value: false, disabled: false }, Validators.required),
-      is_specialist: new FormControl({ value: false, disabled: false }, Validators.required),
-      is_physician: new FormControl({ value: false, disabled: false }, Validators.required),
+      medicall_staffer: new FormControl({ value: false, disabled: false }, Validators.required),
+      specialist_area: new FormControl({ value: false, disabled: false }, Validators.required),
+      // is_physician: new FormControl({ value: false, disabled: false }, Validators.required),
       password: new FormControl({ value: '', disabled: false }),
       confirmpassword: new FormControl({ value: '', disabled: false }, Validators.required),
     });
@@ -50,18 +50,9 @@ export class RegisterComponent implements OnInit {
       console.log("The passwords did not match");
       this.loading = false;
     } else {
-      if(this.regForm.get('is_specialist').value == "true"){
-        this.regForm.get('is_specialist').value = true
-      }
-      if(this.regForm.get('is_physician').value == "true"){
-        this.regForm.get('is_physician').value = true
-      }
-      if(this.regForm.get('is_doctor').value == "true"){
-        this.regForm.get('is_doctor').value = true
-      }
-      console.log("is_physician", this.regForm.get('is_physician').value);
-      console.log("is_specialist", this.regForm.get('is_specialist').value);
-      console.log("is_doctor", this.regForm.get('is_doctor').value);
+      // console.log("is_physician", this.regForm.get('is_physician').value);
+      console.log("specialist_area", this.regForm.get('specialist_area').value);
+      console.log("medicall_staffer", this.regForm.get('medicall_staffer').value);
 
       const formData = {
         username: this.regForm.get('username').value,
@@ -69,9 +60,9 @@ export class RegisterComponent implements OnInit {
         first_name: this.regForm.get('first_name').value,
         last_name: this.regForm.get('last_name').value,
         email: this.regForm.get('email').value,
-        is_doctor: this.regForm.get('is_doctor').value,
-        is_specialist: this.regForm.get('is_specialist').value,
-        is_physician: this.regForm.get('is_physician').value,
+        medicall_staffer: this.regForm.get('medicall_staffer').value,
+        specialist_area: this.regForm.get('specialist_area').value,
+        // is_physician: this.regForm.get('is_physician').value,
         password: this.regForm.get('password').value,
       }
 

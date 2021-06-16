@@ -2,6 +2,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { formatDate, Location } from '@angular/common';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-view-approval',
@@ -15,12 +16,19 @@ export class ViewApprovalComponent implements OnInit {
   format = 'MMMM d, y, h:mm:ss a zzzz';
   locale = 'en-US';
 
+  userResults = [];
+
+  race: any;
+
   user: any;
+
+  loading: any;
 
   constructor(
     private route: ActivatedRoute,
     private toastr: ToastrService,
-    private location: Location
+    private location: Location,
+    private apiService: ApiService,
   ) { }
 
   ngOnInit(): void {
@@ -28,15 +36,32 @@ export class ViewApprovalComponent implements OnInit {
     if (JSON.parse(localStorage.getItem("is_superuser")) != true) {
       this.location.back();
     }
+
+    this.getResults();
   }
 
-  race = {
-    username: this.route.snapshot.paramMap.get('username'),
-    email: this.route.snapshot.paramMap.get('email'),
-    status: this.route.snapshot.paramMap.get('status'),
-    approvedby: this.route.snapshot.paramMap.get('approvedby'),
-    updated: this.route.snapshot.paramMap.get('updated'),
-    timestamp: this.route.snapshot.paramMap.get('timestamp'),
+  // race = {
+  //   username: this.route.snapshot.paramMap.get('username'),
+  //   email: this.route.snapshot.paramMap.get('email'),
+  //   status: this.route.snapshot.paramMap.get('status'),
+  //   approvedby: this.route.snapshot.paramMap.get('approvedby'),
+  //   updated: this.route.snapshot.paramMap.get('updated'),
+  //   timestamp: this.route.snapshot.paramMap.get('timestamp'),
+  // }
+
+  getResults() {
+    this.loading = true;
+    this.apiService.GetData('/approvals/'+this.route.snapshot.paramMap.get('id')+'/Approval_detail').subscribe(data => {
+      this.loading = false;
+      console.log('one request', data);
+      this.race = data;
+    },
+      err => {
+        console.log(err)
+        this.loading = false;
+        this.toastr.error('Error', err.message);
+      }
+    );
   }
 
 

@@ -1,7 +1,7 @@
 import { formatDate, Location } from '@angular/common';
 import { FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterEvent } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from '../services/api.service';
 
@@ -35,6 +35,8 @@ export class ApprovalsComponent implements OnInit {
   format = 'MMMM d, y, h:mm:ss a zzzz';
   locale = 'en-US';
 
+  userDetails: any;
+
 
   userResults = [];
 
@@ -42,13 +44,16 @@ export class ApprovalsComponent implements OnInit {
   constructor(
     private toastr: ToastrService,
     private apiService: ApiService,
-    private location: Location
+    private location: Location,
+    private router: Router
   ) {
 
   }
 
   ngOnInit(): void {
     this.getResults();
+
+    this.getOneUser();
 
     this.user = JSON.parse(localStorage.getItem('user'));
 
@@ -58,12 +63,12 @@ export class ApprovalsComponent implements OnInit {
   }
 
 
-  getResults() {
+  getOneUser() {
     this.loading = true;
-    this.apiService.GetData('/approvals').subscribe(data => {
+    this.apiService.GetData('/users/?id='+JSON.parse(localStorage.getItem('user_id'))).subscribe(data => {
       this.loading = false;
-      console.log('all requests', data);
-      this.userResults = data;
+      console.log('one user', data);
+      this.userDetails = data;
     },
       err => {
         console.log(err)
@@ -72,6 +77,91 @@ export class ApprovalsComponent implements OnInit {
       }
     );
   }
+
+
+  getResults() {
+    this.loading = true;
+    this.apiService.GetData('/approvals/').subscribe(data => {
+      this.loading = false;
+      console.log('all requests', data);
+      this.userResults = data['results'];
+    },
+      err => {
+        console.log(err)
+        this.loading = false;
+        this.toastr.error('Error', err.message);
+      }
+    );
+  }
+
+
+  approveRequest(id) {
+    this.loading = true;
+
+      const formData = {
+        // user: this.regForm.get('user').value,
+        approvedby: this.userDetails.id,
+        status: 'Approved',
+      }
+
+      console.log("formData", formData);
+      console.log("id", id);
+
+      this.apiService.PutData('/approvals/'+ id +'/edit/', formData).subscribe(data => {
+        console.log(data)
+        this.loading = false;
+        this.toastr.success('Success', 'Approval Request has been Approved !!!');
+        this.router.navigateByUrl('/approvals');
+      },
+        err => {
+          this.loading = false;
+          if (err.status === 400) {
+            this.toastr.error('Error.', 'Pliz fill in all fields!');
+            this.toastr.error('Error', err.message);
+            // console.log(err.error.message);
+          } else {
+            console.log(err)
+            this.toastr.error('Error', err.message);
+          }
+
+        }
+      );
+    }
+
+
+
+    rejectRequest(id) {
+      this.loading = true;
+  
+        const formData = {
+          // user: this.regForm.get('user').value,
+          approvedby: this.userDetails.id,
+          status: 'Rejected',
+        }
+  
+        console.log("formData", formData);
+        console.log("id", id);
+  
+        this.apiService.PutData('/approvals/'+ id +'/edit/', formData).subscribe(data => {
+          console.log(data)
+          this.loading = false;
+          this.toastr.error('Rejected', 'Approval Request Has been Rejected!!!');
+          this.router.navigateByUrl('/approvals');
+        },
+          err => {
+            this.loading = false;
+            if (err.status === 400) {
+              this.toastr.error('Error.', 'Pliz fill in all fields!');
+              this.toastr.error('Error', err.message);
+              // console.log(err.error.message);
+            } else {
+              console.log(err)
+              this.toastr.error('Error', err.message);
+            }
+  
+          }
+        );
+      }
 
 
 

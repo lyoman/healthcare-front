@@ -23,9 +23,9 @@
                     <th>Full name</th>
                     <th>Email</th>
                     <th>Phone Number</th>
-                    <th>is_doctor</th>
-                    <th>is_specialist</th>
-                    <th>is_physician</th>
+                    <!-- <th>is_doctor</th> -->
+                    <th>medicall_staffer</th>
+                    <th>specialist_area</th>
                     <th>is_staff</th>
                     <th>is_superuser</th>
                     <th>is_active</th>
@@ -48,14 +48,14 @@
                         <p>{{ m.phone_number }}</p>
                     </td>
 
-                    <td>
+                    <!-- <td>
                         <p>{{ m.is_doctor }}</p>
+                    </td> -->
+                    <td>
+                        <p>{{ m.medicall_staffer }}</p>
                     </td>
                     <td>
-                        <p>{{ m.is_specialist }}</p>
-                    </td>
-                    <td>
-                        <p>{{ m.is_physician }}</p>
+                        <p>{{ m.specialist_area }}</p>
                     </td>
 
                     <td>
