@@ -65,4 +65,82 @@ export class ViewApprovalComponent implements OnInit {
   }
 
 
+  approveRequest(id) {
+    this.loading = true;
+
+    const formData = {
+      // user: this.regForm.get('user').value,
+      approvedby: JSON.parse(localStorage.getItem('user_id')),
+      status: 'Approved',
+    }
+
+    console.log("formData", formData);
+    console.log("id", id);
+
+    this.apiService.PutData('/approvals/' + id + '/edit/', formData).subscribe(data => {
+      console.log(data)
+      this.loading = false;
+      this.toastr.success('Success', 'Approval Request has been Approved !!!');
+      // this.router.navigateByUrl('/approvals');
+      // location.reload();
+      setTimeout(function () {
+        location.reload();
+      }, 2000);
+    },
+      err => {
+        this.loading = false;
+        if (err.status === 400) {
+          this.toastr.error('Error.', 'Pliz fill in all fields!');
+          this.toastr.error('Error', err.message);
+          // console.log(err.error.message);
+        } else {
+          console.log(err)
+          this.toastr.error('Error', err.message);
+        }
+
+      }
+    );
+  }
+
+
+
+  rejectRequest(id) {
+    this.loading = true;
+
+    const formData = {
+      // user: this.regForm.get('user').value,
+      approvedby: JSON.parse(localStorage.getItem('user_id')),
+      status: 'Rejected',
+    }
+
+    console.log("formData", formData);
+    console.log("id", id);
+
+    this.apiService.PutData('/approvals/' + id + '/edit/', formData).subscribe(data => {
+      console.log(data)
+      this.loading = false;
+      this.toastr.success('Rejected', 'Approval Request Has been Successfully Rejected!!!');
+      // this.router.navigateByUrl('/approvals');
+      // location.reload();
+      setTimeout(function () {
+        location.reload();
+      }, 2000);
+    },
+      err => {
+        this.loading = false;
+        if (err.status === 400) {
+          this.toastr.error('Error.', 'Pliz fill in all fields!');
+          this.toastr.error('Error', err.message);
+          // console.log(err.error.message);
+        } else {
+          console.log(err)
+          this.toastr.error('Error', err.message);
+        }
+
+      }
+    );
+  }
+
+
+
 }

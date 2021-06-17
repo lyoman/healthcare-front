@@ -26,9 +26,9 @@
                     <!-- <th>is_doctor</th> -->
                     <th>medicall_staffer</th>
                     <th>specialist_area</th>
-                    <th>is_staff</th>
+                    <!-- <th>is_staff</th> -->
                     <th>is_superuser</th>
-                    <th>is_active</th>
+                    <!-- <th>is_active</th> -->
                     <th>View</th>
                 </tr>
             </thead>
@@ -58,15 +58,15 @@
                         <p>{{ m.specialist_area }}</p>
                     </td>
 
-                    <td>
+                    <!-- <td>
                         <p>{{ m.is_staff }}</p>
-                    </td>
+                    </td> -->
                     <td>
                         <p>{{ m.is_superuser }}</p>
                     </td>
-                    <td>
+                    <!-- <td>
                         <p>{{ m.is_active }}</p>
-                    </td>
+                    </td> -->
                     <td>
                         <button [routerLink]=" ['details', m]" class="btn btn-success">
                             <i class="fa fa-play"></i>

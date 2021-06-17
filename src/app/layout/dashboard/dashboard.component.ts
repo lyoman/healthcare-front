@@ -16,6 +16,8 @@ export class DashboardComponent implements OnInit {
   userResults = [];
   userDetails = [];
   userApproval = [];
+  userAllApproval = [];
+  oneuserDetails = [];
   count: any;
 
   regForm;
@@ -102,7 +104,7 @@ export class DashboardComponent implements OnInit {
     this.apiService.GetData('/users/?id='+JSON.parse(localStorage.getItem('user_id'))).subscribe(data => {
       this.loading = false;
       console.log('one user', data);
-      this.userDetails = data;
+      this.oneuserDetails = data[0];
     },
       err => {
         console.log(err)
@@ -117,10 +119,15 @@ export class DashboardComponent implements OnInit {
     this.apiService.GetData('/approvals/?id='+JSON.parse(localStorage.getItem('user_id'))).subscribe(data => {
       this.loading = false;
       console.log('approvals', data);
-      this.userApproval = data['results'][0];
+      if (data.count == 0) {
+        this.userApproval = data['results'];
+      } else {
+        this.userApproval = data['results'][0];
+        console.log('one approvals', this.userApproval);
+      }
       this.count = data.count;
-      console.log("count", this.userApproval['status']);
-      console.log('one approvals', this.userApproval);
+      // console.log("count", this.userApproval['status']);
+      
     },
       err => {
         console.log(err)
@@ -136,10 +143,10 @@ export class DashboardComponent implements OnInit {
     this.apiService.GetData('/approvals/').subscribe(data => {
       this.loading = false;
       console.log('all approvals', data);
-      this.userApproval = data['results'];
+      this.userAllApproval = data['results'];
       this.count = data.count;
-      console.log("all approvals", this.userApproval);
-      console.log('all approvals', this.userApproval);
+      console.log("all approvals", this.userAllApproval);
+      console.log('all approvals', this.userAllApproval);
     },
       err => {
         console.log(err)
@@ -164,7 +171,10 @@ export class DashboardComponent implements OnInit {
         console.log(data)
         this.loading = false;
         this.toastr.success('Success', 'Approval Request sent successfully');
-        this.router.navigateByUrl('/dashboard');
+        // this.router.navigateByUrl('/dashboard');
+        setTimeout(function () {
+          location.reload();
+        }, 2000);
       },
         err => {
           this.loading = false;

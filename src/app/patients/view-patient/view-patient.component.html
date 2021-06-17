@@ -30,13 +30,18 @@
                     </tr>
 
                     <tr>
-                        <td>Heart Rate</td>
-                        <td>{{ race.heart_rate }}</td>
+                        <td>Patient History</td>
+                        <td>{{ race.patient_history }}</td>
                     </tr>
 
                     <tr>
-                        <td>Blood Pressure</td>
-                        <td>{{ race.blood_pressure }}</td>
+                        <td>Recommended Diagnosis</td>
+                        <td>{{ race.recommended_diagnosis }}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Timestamp</td>
+                        <td>{{ race.timestamp | date }} {{ race.timestamp | date: 'shortTime' }}</td>
                     </tr>
 
                     <!-- employee empNo, firstname, nextOfKim, nextOfKinContact, phoneNumber, race, route, surname, userName -->
@@ -54,6 +59,16 @@
                 <tbody>
 
                     <tr>
+                        <td>Heart Rate</td>
+                        <td>{{ race.heart_rate }}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Blood Pressure</td>
+                        <td>{{ race.blood_pressure }}</td>
+                    </tr>
+
+                    <tr>
                         <td>Respiratory Rate</td>
                         <td>{{ race.respiratory_rate }}</td>
                     </tr>
@@ -61,11 +76,6 @@
                     <tr>
                         <td>Temperature</td>
                         <td>{{ race.temperature }}</td>
-                    </tr>
-
-                    <tr>
-                        <td>Timestamp</td>
-                        <td>{{ race.timestamp | date }} {{ race.timestamp | date: 'shortTime' }}</td>
                     </tr>
 
                     <tr>

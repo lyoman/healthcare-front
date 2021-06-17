@@ -1,7 +1,7 @@
 <div class="">
     <h2 class="content-style">Main Dashboard</h2>
     <h3 class="header-style" style="text-align: center;" *ngIf="is_superuser">Welcome, Admin User</h3>
-    <h3 class="header-style" style="text-align: center;" *ngIf="!is_superuser">Welcome {{ username }}</h3>
+    <h3 class="header-style" style="text-align: center;" *ngIf="!is_superuser">Welcome {{ username }} | {{ oneuserDetails.specialist_area }}</h3>
     <hr>
     <div class="row" *ngIf="!loading">
         <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 mt-4 align-items-center" *ngIf="is_superuser">
@@ -75,7 +75,7 @@
         <div *ngIf="userApproval.status == 'Rejected'" class="col-sm-6 col-md-4 col-lg-3 col-xl-3 mt-4 align-items-center">
             <div class="card-deck">
                 <div class="card mb-4">
-                    <a [routerLinkActive]="['router-link-active']" [routerLink]="['/patients']">
+                    <a [routerLinkActive]="['router-link-active']" (click)="rejectedReq()">
                         <img class="card-img-top img-fluid" src="assets/images/patient.png" alt="packaging">
 
                         <div class="card-body">
@@ -96,7 +96,7 @@
                         <img class="card-img-top img-fluid" src="assets/images/report.png" alt="packaging">
 
                         <div class="card-body">
-                            <h4 class="card-title">Approval Requets</h4>
+                            <h4 class="card-title">Approval Requets ({{ userAllApproval.length }})</h4>
                             <small>
                                 <p class="card-text">View all approval Requests</p>
                             </small>

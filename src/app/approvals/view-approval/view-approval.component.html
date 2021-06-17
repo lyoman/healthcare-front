@@ -24,9 +24,15 @@
                         <td>Username</td>
                         <td>{{ race.user.username }}</td>
                     </tr>
+                    <!-- medicall_staffer -->
                     <tr>
-                        <td>Status</td>
-                        <td>{{ race.status }}</td>
+                        <td>Medicall Staffer</td>
+                        <td>{{ race.user.medicall_staffer }}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Specialist Area</td>
+                        <td>{{ race.user.specialist_area }}</td>
                     </tr>
 
                     <tr>
@@ -49,7 +55,12 @@
                 <tbody>
                     <tr>
                         <td>Approvedby</td>
-                        <td>{{ race.approvedby }}</td>
+                        <td>{{ race.approvedby.username }}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Status</td>
+                        <td>{{ race.status }}</td>
                     </tr>
 
                     <tr>
@@ -70,11 +81,11 @@
 
 
         <div class="text text-center" *ngIf="race.status != 'Approved'" style="clear: both;width: 100%;margin-top: 2%;">
-            <button type="submit" class="btn btn-outline-primary btn-block">Approve</button>
+            <button type="submit" (click)="approveRequest(race.id)" class="btn btn-outline-primary btn-block">Approve</button>
         </div><br>
 
-        <div class="text text-center" *ngIf="race.status != 'Approved'" style="clear: both;width: 100%;margin-top: 2%;">
-            <button type=" submit " class="btn btn-outline-danger btn-block ">Reject</button>
+        <div class="text text-center" *ngIf="race.status == 'Approved'" style="clear: both;width: 100%;margin-top: 2%;">
+            <button type="submit" (click)="rejectRequest(race.id)" class="btn btn-outline-danger btn-block ">Reject</button>
         </div>
 
     </div>
